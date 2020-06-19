@@ -14,6 +14,7 @@ public class Database : MonoBehaviour
     public GameObject figureItem;
     private string keywords = "";
     private List<Paper> lastSearch;
+    public LittlePad lp;
 
     private void ShowIndex() {
         ClearPage();
@@ -52,6 +53,7 @@ public class Database : MonoBehaviour
             GameObject tmp = Instantiate(figureItem, figures.transform);
             tmp.GetComponent<Image>().sprite = f.img;
             tmp.GetComponent<FigureItem>().f = f;
+            tmp.GetComponent<Button>().onClick.AddListener(() => { lp.DownloadFigure(f); });
         }
     }
     private void ClearPage() {
